@@ -1,0 +1,6 @@
+{
+  "name": "StyleGuide",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./StyleGuide.js"
+}
