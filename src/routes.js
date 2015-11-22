@@ -19,6 +19,11 @@ const router = new Router(on => {
     return component && <App context={state.context}>{component}</App>;
   });
 
+  on('/', async () => {
+    const data = await http.get('/data.json');
+    return <Index {...data} />
+  });
+
   on('/', async () => <Index />);
   on('/style-guide', async () => <StyleGuide />);
 

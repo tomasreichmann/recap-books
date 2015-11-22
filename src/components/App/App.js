@@ -7,7 +7,7 @@ import withStyles from '../../decorators/withStyles';
 import Header from '../Header';
 import Feedback from '../Feedback';
 import Footer from '../Footer';
-import 'scripts/bootstrap.min.js'
+//import bootstrap from './scripts/bootstrap.min.js';
 
 @withContext
 @withStyles(styles)

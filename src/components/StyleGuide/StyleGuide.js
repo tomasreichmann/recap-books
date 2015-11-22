@@ -15,7 +15,7 @@ class StyleGuide extends Component {
     const title = 'Style guide';
     this.context.onSetTitle(title);
     return (
-    <div className="container theme-showcase" role="main">
+    <div className="container theme-showcase StyleGuide" role="main">
 
       
       <div className="jumbotron iron-dark text-gray-lighter">

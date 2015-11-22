@@ -3,6 +3,7 @@
 import React, { PropTypes, Component } from 'react';
 import withStyles from '../../decorators/withStyles';
 import styles from './Index.scss';
+import CampaignList from '../CampaignList';
 
 @withStyles(styles)
 class Index extends Component {
@@ -14,14 +15,14 @@ class Index extends Component {
   render() {
     const title = 'Style guide';
     this.context.onSetTitle(title);
+    var campaignList = this.props.campaigns && <CampaignList campaigns={this.props.campaigns} /> || null;
     return (
-    <div className="container theme-showcase" role="main">
-      
+    <div className="container" role="main">
       <div className="jumbotron iron-dark text-gray-lighter">
-        <h1>Wings of fortune</h1>
+        <h1>Recap books</h1>
         <p><a href="/style-guide" className="btn btn-primary btn-lg gold-lighter" role="button">Style guide »</a></p>
       </div>
-
+      {campaignList}
     </div>
     );
   }
