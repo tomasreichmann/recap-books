@@ -6,6 +6,7 @@ import http from './core/HttpClient';
 import App from './components/App';
 import ContentPage from './components/ContentPage';
 import ContactPage from './components/ContactPage';
+import CampaignDetails from './components/CampaignDetails';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
 import StyleGuide from './components/StyleGuide';
@@ -14,30 +15,36 @@ import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
 
 const router = new Router(on => {
-  on('*', async (state, next) => {
-    const component = await next();
-    return component && <App context={state.context}>{component}</App>;
-  });
+	on('*', async (state, next) => {
+		const component = await next();
+		return component && <App context={state.context}>{component}</App>;
+	});
 
-  on('/', async () => {
-    const data = await http.get('/data.json');
-    return <Index {...data} />
-  });
+	on('/', async () => {
+		const data = await http.get('/data.json');
+		return <Index {...data} />
+	});
 
-  on('/', async () => <Index />);
-  on('/style-guide', async () => <StyleGuide />);
+	on('/', async () => <Index />);
+	on('/style-guide', async () => <StyleGuide />);
+	on('/campaign/:campaignIndex/*', async (state) => {
+		const data = await http.get('/data.json');
+		console.log("Data", state.params.campaignIndex, "in", data.campaigns, state.params.campaignIndex in data.campaigns);
+		const ProductsPage = require('./components/CampaignDetails');
+		return ("campaigns" in data && state.params.campaignIndex in data.campaigns) ? <CampaignDetails campaign={data.campaigns[state.params.campaignIndex]} campaignIndex={state.params.campaignIndex} /> : undefined;
+	});
 
-  //on('/login', async () => <LoginPage />);
+	//on('/login', async () => <LoginPage />);
 
-  on('*', async (state) => {
-    const content = await http.get(`/api/content?path=${state.path}`);
-    return content && <ContentPage {...content} />;
-  });
+	on('*', async (state) => {
+		const content = await http.get(`/api/content?path=${state.path}`);
+		return content && <ContentPage {...content} />;
+	});
 
-  on('error', (state, error) => state.statusCode === 404 ?
-    <App context={state.context} error={error}><NotFoundPage /></App> :
-    <App context={state.context} error={error}><ErrorPage /></App>
-  );
+	on('error', (state, error) => state.statusCode === 404 ?
+		<App context={state.context} error={error}><NotFoundPage /></App> :
+		<App context={state.context} error={error}><ErrorPage /></App>
+	);
 });
 
 export default router;

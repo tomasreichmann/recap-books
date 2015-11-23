@@ -1,0 +1,11 @@
+/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
+
+@import '../variables.scss';
+
+.CampaignDetails {
+	&-description {
+		font-size: 120%;
+		font-style: italic;
+		text-align: center;
+	}
+}
