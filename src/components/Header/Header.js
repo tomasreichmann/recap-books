@@ -20,11 +20,11 @@ class Header extends Component {
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand logo" href="/" ><img src={ require('./gotika-logo.svg') } alt="" height="32" className="middle" /> Kniha recapů</a>
+          <a className="navbar-brand logo" href="/" ><img src={ require('./gotika-logo.svg') } alt="" height="32" className="middle" /> Knihy recapů</a>
         </div>
         <div id="navbar" className="navbar-collapse collapse">
           <ul className="nav navbar-nav">
-            <li className="active"><a href="/">Index</a></li>
+            <li><a href="/">Index</a></li>
             <li className="dropdown">
               <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Kampaň <span className="caret"></span></a>
               <ul className="dropdown-menu" role="menu">
@@ -32,6 +32,9 @@ class Header extends Component {
                 <li><a href="/campaign/wings-of-fortune">Wings of Fortune</a></li>
               </ul>
             </li>
+          </ul>
+          <ul className="nav navbar-nav navbar-right">
+            <li><a href="/style-guide" title="Style guide">Style guide</a></li>
           </ul>
         </div>
       </div>

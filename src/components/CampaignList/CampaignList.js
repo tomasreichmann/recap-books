@@ -24,6 +24,7 @@ class CampaignList extends Component {
           {campaignDates}
           <p className="CampaignList-campaign-length">{campaign.recaps.length} Recapů</p>
           <p className="CampaignList-campaign-description"><em>{campaign.description}</em></p>
+          <hr className="trim8 mt-xlg mb-xlg" />
         </div>
       );
     };
@@ -32,7 +33,7 @@ class CampaignList extends Component {
       <div className="page-header">
         <h2>Kampaně</h2>
       </div>
-      <div className="CampaignList-campaigns" >{campaignOutput}</div>
+      <div className="CampaignList-campaigns mt-xlg" >{campaignOutput}</div>
     </section>
     );
   }

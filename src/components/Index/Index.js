@@ -13,7 +13,7 @@ class Index extends Component {
   };
 
   render() {
-    const title = 'Style guide';
+    const title = 'Knihy recapů';
     this.context.onSetTitle(title);
     var campaignList = this.props.campaigns && <CampaignList campaigns={this.props.campaigns} /> || null;
     return (

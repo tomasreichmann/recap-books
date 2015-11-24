@@ -1,0 +1,6 @@
+{
+  "name": "RecapDetails",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./RecapDetails.js"
+}

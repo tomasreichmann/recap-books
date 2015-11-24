@@ -98,6 +98,106 @@ textarea {
   padding: 0.2em 0;
 }
 
+
+/*
+ * utility styles
+ * ========================================================================== */
+
+.no-m           { margin: 0 !important; }
+.no-mt          { margin-top: 0 !important; }
+.no-mr          { margin-right: 0 !important; }
+.no-mb          { margin-bottom: 0 !important; }
+.no-ml          { margin-left: 0 !important; }
+.m              { margin: 8px 12px !important; }
+.mt             { margin-top: 12px !important; }
+.mr             { margin-right: 8px !important; }
+.mb             { margin-bottom: 12px !important; }
+.ml             { margin-left: 8px !important; }
+.m-lg           { margin: 10px 15px !important; }
+.mt-lg          { margin-top: 15px !important; }
+.mr-lg          { margin-right: 10px !important; }
+.mb-lg          { margin-bottom: 15px !important; }
+.ml-lg          { margin-left: 10px !important; }
+.m-xlg          { margin: 20px 30px !important; }
+.mt-xlg         { margin-top: 30px !important; }
+.mr-xlg         { margin-right: 20px !important; }
+.mb-xlg         { margin-bottom: 30px !important; }
+.ml-xlg         { margin-left: 20px !important; }
+.m-sm           { margin: 6px 9px !important; }
+.mt-sm          { margin-top: 9px !important; }
+.mr-sm          { margin-right: 6px !important; }
+.mb-sm          { margin-bottom: 9px !important; }
+.ml-sm          { margin-left: 6px !important; }
+.m-xs           { margin: 4px 6px !important; }
+.mt-xs          { margin-top: 6px !important; }
+.mr-xs          { margin-right: 4px !important; }
+.mb-xs          { margin-bottom: 6px !important; }
+.ml-xs          { margin-left: 4px !important; }
+.mt-minus       { margin-top: -12px !important; }
+.mb-minus       { margin-bottom: -12px !important; }
+.mt-minus-lg    { margin-top: -15px !important; }
+.mb-minus-lg    { margin-bottom: -15px !important; }
+.mt-minus-xlg   { margin-top: -15px !important; }
+.mb-minus-xlg   { margin-bottom: -15px !important; }
+.mt-minus-sm    { margin-top: -9px !important; }
+.mb-minus-sm    { margin-bottom: -9px !important; }
+.mt-minus-xs    { margin-top: -6px !important; }
+.mb-minus-xs    { margin-bottom: -6px !important; }
+.no-p           { padding: 0 !important; }
+.no-pt          { padding-top: 0 !important; }
+.no-pr          { padding-right: 0 !important; }
+.no-pb          { padding-bottom: 0 !important; }
+.no-pl          { padding-left: 0 !important; }
+.p              { padding: 8px 12px !important; }
+.pt             { padding-top: 12px !important; }
+.pr             { padding-right: 8px !important; }
+.pb             { padding-bottom: 12px !important; }
+.pl             { padding-left: 8px !important; }
+.p-lg           { padding: 10px 15px !important; }
+.pt-lg          { padding-top: 15px !important; }
+.pr-lg          { padding-right: 10px !important; }
+.pb-lg          { padding-bottom: 15px !important; }
+.pl-lg          { padding-left: 10px !important; }
+.p-xlg          { padding: 20px 30px !important; }
+.pt-xlg         { padding-top: 30px !important; }
+.pr-xlg         { padding-right: 20px !important; }
+.pb-xlg         { padding-bottom: 30px !important; }
+.pl-xlg         { padding-left: 20px !important; }
+.p-sm           { padding: 6px 9px !important; }
+.pt-sm          { padding-top: 9px !important; }
+.pr-sm          { padding-right: 6px !important; }
+.pb-sm          { padding-bottom: 9px !important; }
+.pl-sm          { padding-left: 6px !important; }
+.p-xs           { padding: 4px 6px !important; }
+.pt-xs          { padding-top: 6px !important; }
+.pr-xs          { padding-right: 4px !important; }
+.pb-xs          { padding-bottom: 6px !important; }
+.pl-xs          { padding-left: 4px !important; }
+
+.no-b           { border: 0 !important; }
+.no-bt          { border-top: 0 !important; }
+.no-br          { border-right: 0 !important; }
+.no-bb          { border-bottom: 0 !important; }
+.no-bl          { border-left: 0 !important; }
+
+.maw64          { max-width: 64px !important; }
+.maw128         { max-width: 128px !important; }
+.maw256         { max-width: 256px !important; }
+.maw512         { max-width: 512px !important; }
+
+.w-a            { width: auto !important; }
+.w0             { width: 0.001% !important; }
+.w32            { width: 32px !important; }
+.w48            { width: 48px !important; }
+.w64            { width: 64px !important; }
+.w96            { width: 96px !important; }
+.w128           { width: 128px !important; }
+.w192           { width: 192px !important; }
+.w224           { width: 224px !important; }
+.w256           { width: 256px !important; }
+.w512           { width: 512px !important; }
+
+
 /*
  * Print styles
  * Inlined to avoid the additional HTTP request:

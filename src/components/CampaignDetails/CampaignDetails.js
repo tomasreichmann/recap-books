@@ -20,12 +20,11 @@ class CampaignDetails extends Component {
 
 	render() {
 		var campaignOutput = [];
-		console.log("this.props.campaign", this.props.campaign);
 		var campaign = this.props.campaign;
 		var campaignIndex = this.props.campaignIndex;
 		var recapList = [];
 		var campaignSlug = slugify(campaign.name);
-		var campaignUrl = "/campaign/"+campaignIndex + "/" +campaignSlug
+		var campaignUrl = "/campaign/"+campaignIndex + "/" + campaignSlug
 
 		for (var recapIndex = 0; recapIndex < campaign.recaps.length; recapIndex++) {
 			var recap = campaign.recaps[recapIndex];
@@ -38,22 +37,26 @@ class CampaignDetails extends Component {
 			)}</div>;
 			recapList.push(
 				<div className="CampaignDetails-recap" key={recapIndex} >
-					<div className="CampaignDetails-recap-cover"><img src={recap.cover} alt="" className="img-responsive" /></div>
-					<h2><a href={recapUrl} title="{recap.title}">{recap.title}</a></h2>
+					<a className="CampaignDetails-recap-cover" href={recapUrl} title={recap.title} >
+						<img src={recap.cover} alt="" className="img-responsive" />
+						<h2 className="h1" >#{recapIndex}&ensp;{recap.title}</h2>
+					</a>
 					{authorText}
 					<div className="CampaignDetails-recap-intro" dangerouslySetInnerHTML={{__html: recap.intro || ''}} ></div>
-					<p className="text-right"><a href={recapUrl} title={recap.title}>Více &gt;</a></p>
+					<p className="text-right"><a href={recapUrl} title={recap.title} className="btn btn-primary wood">Více &gt;</a></p>
+					<hr className="trim8 mt-xlg mb-xlg" />
 				</div>
 			);
 		};
 
 
 		return <main className="CampaignDetails-module container" role="main" >
-			<div className="page-header">
+			<div className="page-header mb-xlg">
 				<div className="CampaignDetails-logo"><img src={campaign.logo} alt="" className="img-responsive" /></div>
 				<h1 className="text-center">{campaign.name}</h1>
 			</div>
 			<div className="CampaignDetails-description" dangerouslySetInnerHTML={{__html: campaign.description || ''}} ></div>
+			<hr className="trim8 mt-xlg mb-xlg" />
 			<div className="CampaignDetails-recapList" >
 				{recapList}
 			</div>
