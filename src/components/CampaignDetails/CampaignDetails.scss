@@ -26,7 +26,7 @@
 			left: 0;
 			bottom: 0;
 			right: 0;
-			padding: 40px 30px 20px 30px;
+			padding: 40px 30px 30px 30px;
 			margin: 0;
 			color: #fff;
 			z-index: 1;
@@ -39,5 +39,8 @@
 	&-author-text {
 		margin-bottom: 20px;
 		font-style: italic;
+	}
+	&-characters {
+		a+a { margin-left: 1em; }
 	}
 }

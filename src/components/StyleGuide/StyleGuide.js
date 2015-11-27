@@ -198,7 +198,7 @@ class StyleGuide extends Component {
             </thead>
             <tbody>
               <tr>
-                <td rowspan="2">1</td>
+                <td rowSpan="2">1</td>
                 <td>Mark</td>
                 <td>Otto</td>
                 <td>@mdo</td>
@@ -216,7 +216,7 @@ class StyleGuide extends Component {
               </tr>
               <tr>
                 <td>3</td>
-                <td colspan="2">Larry the Bird</td>
+                <td colSpan="2">Larry the Bird</td>
                 <td>@twitter</td>
               </tr>
             </tbody>
@@ -247,7 +247,7 @@ class StyleGuide extends Component {
               </tr>
               <tr>
                 <td>3</td>
-                <td colspan="2">Larry the Bird</td>
+                <td colSpan="2">Larry the Bird</td>
                 <td>@twitter</td>
               </tr>
             </tbody>
@@ -333,11 +333,11 @@ class StyleGuide extends Component {
       <div className="dropdown theme-dropdown clearfix">
         <a id="dropdownMenu1" href="#" className="sr-only dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span className="caret"></span></a>
         <ul className="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-          <li className="active" role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+          <li className="active" role="presentation"><a role="menuitem" tabIndex="-1" href="#">Action</a></li>
+          <li role="presentation"><a role="menuitem" tabIndex="-1" href="#">Another action</a></li>
+          <li role="presentation"><a role="menuitem" tabIndex="-1" href="#">Something else here</a></li>
           <li role="presentation" className="divider"></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+          <li role="presentation"><a role="menuitem" tabIndex="-1" href="#">Separated link</a></li>
         </ul>
       </div>
 

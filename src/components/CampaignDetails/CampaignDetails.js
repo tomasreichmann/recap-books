@@ -43,11 +43,23 @@ class CampaignDetails extends Component {
 					</a>
 					{authorText}
 					<div className="CampaignDetails-recap-intro" dangerouslySetInnerHTML={{__html: recap.intro || ''}} ></div>
-					<p className="text-right"><a href={recapUrl} title={recap.title} className="btn btn-primary wood">Více &gt;</a></p>
+					<p className="text-right"><a href={recapUrl} title={recap.title} className="btn btn-info wood">Více &gt;</a></p>
 					<hr className="trim8 mt-xlg mb-xlg" />
 				</div>
 			);
 		};
+
+		var $characters = [];
+		if( typeof campaign.characters == "object"){
+			for( var characterSlug in campaign.characters ){
+				var character = campaign.characters[characterSlug];
+				var characterUrl = campaignUrl + "/character/" + characterSlug;
+				$characters.push(<a href={characterUrl} className="btn btn-info iron-dark">{character.name}</a>);
+			}
+			if ($characters.length > 0){
+				$characters = <div className="CampaignDetails-characters" ><h2>Postavy</h2><p>{$characters}</p></div>;
+			}
+		}
 
 
 		return <main className="CampaignDetails-module container" role="main" >
@@ -56,6 +68,7 @@ class CampaignDetails extends Component {
 				<h1 className="text-center">{campaign.name}</h1>
 			</div>
 			<div className="CampaignDetails-description" dangerouslySetInnerHTML={{__html: campaign.description || ''}} ></div>
+			{$characters}
 			<hr className="trim8 mt-xlg mb-xlg" />
 			<div className="CampaignDetails-recapList" >
 				{recapList}

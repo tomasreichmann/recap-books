@@ -40,21 +40,17 @@ class RecapDetails extends Component {
 		var recap = this.props.recap;
 		var recapIndex = parseInt(this.props.recapIndex);
 		var campaignSlug = slugify(campaign.name);
-		var recapSlug = slugify(recap.title);
-		var campaignUrl = "/campaign/"+campaignIndex + "/" +campaignSlug;
-		//var recapUrl = campaignUrl + "/" + recapIndex + "/" + recapSlug;
+		var campaignUrl = "/campaign/"+campaignIndex + "/" + campaignSlug;
 
 		var previousRecapIndex = recapIndex-1;
 		var previousRecap = this.getRecapByIndex(previousRecapIndex);
-		var previousRecapUrl = previousRecap ? this.getRecapUrl(previousRecap, previousRecapIndex, campaignSlug) : undefined;
-		var $previousRecapLink = previousRecapUrl ? <a href={previousRecapUrl} title={previousRecap.title} className="btn btn-primary wood">&lt; Předchozí<br/>{previousRecap.title}</a> : undefined
+		var previousRecapUrl = previousRecap ? this.getRecapUrl(previousRecap, previousRecapIndex, campaignUrl) : undefined;
+		var $previousRecapLink = previousRecapUrl ? <a href={previousRecapUrl} title={previousRecap.title} className="btn btn-info wood">&lt; Předchozí<br/>{previousRecap.title}</a> : undefined
 
 		var nextRecapIndex = recapIndex+1;
 		var nextRecap = this.getRecapByIndex(nextRecapIndex);
-		var nextRecapUrl = nextRecap ? this.getRecapUrl(nextRecap, nextRecapIndex, campaignSlug) : undefined;
-		console.log("nextRecap", nextRecap);
-		console.log("nextRecapUrl", nextRecapUrl);
-		var $nextRecapLink = nextRecapUrl ? <a href={nextRecapUrl} title={nextRecap.title} className="btn btn-primary wood">Následující &gt;<br/>{nextRecap.title}</a> : undefined
+		var nextRecapUrl = nextRecap ? this.getRecapUrl(nextRecap, nextRecapIndex, campaignUrl) : undefined;
+		var $nextRecapLink = nextRecapUrl ? <a href={nextRecapUrl} title={nextRecap.title} className="btn btn-info wood">Následující &gt;<br/>{nextRecap.title}</a> : undefined
 
 		var authorUrl = campaignUrl + "/bio/" + slugify(recap.author);
 		var authorText = <div className="RecapDetails-author-text">{this.mapAlternate(recap.authorText.split(/#([^#]*)#/), 
@@ -64,7 +60,7 @@ class RecapDetails extends Component {
 
 		var text = recap.text.replace(/\[img([^\]]*)\]/, '<img src="/' + campaignSlug + '/$1.jpg" alt="" class="RecapDetails-text-image" />' );
 
-		return <article className="RecapDetails-module container" role="article" >
+		return <article className="RecapDetails container" role="article" >
 			<div className="RecapDetails-recap-cover" >
 				<img src={recap.cover} alt="" className="img-responsive" />
 				<h1 >#{recapIndex}&ensp;{recap.title}</h1>
@@ -74,9 +70,10 @@ class RecapDetails extends Component {
 			<hr className="trim8 mt-xlg mb-xlg" />
 			<div className="RecapDetails-text" dangerouslySetInnerHTML={{__html: text || ''}} ></div>
 			<hr className="trim8 mt-xlg mb-xlg" />
-			<div className="RecapDetails-nav clear">
-				<div className="col-sm-6 no-pl">{ $previousRecapLink }</div>
-				<div className="col-sm-6 no-pr text-right">{ $nextRecapLink }</div>
+			<div className="RecapDetails-nav clearfix">
+				<div className="col-sm-4 no-pl">{ $previousRecapLink }</div>
+				<div className="col-sm-4 no-pl text-center"><a className="btn btn-info wood" href={campaignUrl} title={campaign.name} >Zpět na<br/>{campaign.name}</a></div>
+				<div className="col-sm-4 no-pr text-right">{ $nextRecapLink }</div>
 			</div>
 		</article>
 	}
