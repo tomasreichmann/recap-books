@@ -9,6 +9,7 @@ import CampaignDetails from './components/CampaignDetails';
 import RecapDetails from './components/RecapDetails';
 import StyleGuide from './components/StyleGuide';
 import Index from './components/Index';
+import Bio from './components/Bio';
 import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
 
@@ -23,22 +24,20 @@ const router = new Router(on => {
 		return <Index {...data} />
 	});
 
-	on('/', async () => <Index />);
 	on('/style-guide', async () => <StyleGuide />);
 
 	on('/campaign/:campaignIndex/*/character/:characterSlug', async (state) => {
 		const data = await http.get('/data.json');
 		console.log("BIO");
-		var recapExists = "campaigns" in data
+		var characterExists = "campaigns" in data
 			&& state.params.campaignIndex in data.campaigns
-			&& "recaps" in data.campaigns[state.params.campaignIndex]
-			&& state.params.recapIndex in data.campaigns[state.params.campaignIndex].recaps
+			&& "characters" in data.campaigns[state.params.campaignIndex]
+			&& state.params.characterSlug in data.campaigns[state.params.campaignIndex].characters
 		;
-		return recapExists ? <RecapDetails
+		return characterExists ? <Bio
 			campaign={data.campaigns[state.params.campaignIndex]}
 			campaignIndex={state.params.campaignIndex}
-			recap={data.campaigns[state.params.campaignIndex].recaps[state.params.recapIndex]}
-			recapIndex={state.params.recapIndex} /> : undefined;
+			character={data.campaigns[state.params.campaignIndex].characters[state.params.characterSlug]} /> : false;
 	});
 
 	on('/campaign/:campaignIndex/*/:recapIndex/*', async (state) => {
@@ -52,14 +51,14 @@ const router = new Router(on => {
 			campaign={data.campaigns[state.params.campaignIndex]}
 			campaignIndex={state.params.campaignIndex}
 			recap={data.campaigns[state.params.campaignIndex].recaps[state.params.recapIndex]}
-			recapIndex={state.params.recapIndex} /> : undefined;
+			recapIndex={state.params.recapIndex} /> : false;
 	});
 
 	on('/campaign/:campaignIndex/*', async (state) => {
 		const data = await http.get('/data.json');
 		return ("campaigns" in data && state.params.campaignIndex in data.campaigns) ? <CampaignDetails
 			campaign={data.campaigns[state.params.campaignIndex]}
-			campaignIndex={state.params.campaignIndex} /> : undefined;
+			campaignIndex={state.params.campaignIndex} /> : false;
 	});
 
 	//on('/login', async () => <LoginPage />);

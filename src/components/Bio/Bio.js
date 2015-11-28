@@ -8,8 +8,20 @@ import slugify from '../../core/slugify';
 @withStyles(styles)
 class Bio extends Component {
 
+	static contextTypes = {
+		onSetTitle: PropTypes.func.isRequired,
+	};
+
 	render() {
+		
 		var $characters = [];
+		var campaign = this.props.campaign;
+		var campaignIndex = this.props.campaignIndex;
+		var campaignSlug = slugify(campaign.name);
+		var campaignUrl = "/campaign/"+campaignIndex + "/" + campaignSlug;
+		var character = this.props.character;
+		this.context.onSetTitle(character.name + " | " + campaign.name);
+
 		if( typeof campaign.characters == "object"){
 			for( var characterSlug in campaign.characters ){
 				var character = campaign.characters[characterSlug];
@@ -21,18 +33,19 @@ class Bio extends Component {
 			}
 		}
 		
-		return <article className="Bio-module container" role="article" >
-			<div className="Bio-image col-sm-4" >
-				<img src={recap.cover} alt="" className="img-responsive" />
-				<h1>{recap.title}</h1>
+		return <article className="Bio container" role="article" >
+			<div className="col-sm-4" >
+				<div className="Bio-image" >
+					<img src={character.image} alt="" className="img-responsive" />
+					<h1>{character.name}</h1>
+				</div>
 			</div>
 			<div className="cols-sm-8">
-				<div className="Bio-text" dangerouslySetInnerHTML={{__html: text || ''}} ></div>
-				<hr className="trim8 mt-xlg mb-xlg" />
+				<div className="Bio-text" dangerouslySetInnerHTML={{__html: character.bio || ''}} ></div>
+				<hr className="trim8 mt-xlg" />
 				<div className="Bio-nav clearfix">
-					{characters}
+					{$characters}
 					<p><a className="btn btn-info wood" href={campaignUrl} title={campaign.name} >Zpět na<br/>{campaign.name}</a></p>
-					}
 				</div>
 			</div>
 		</article>

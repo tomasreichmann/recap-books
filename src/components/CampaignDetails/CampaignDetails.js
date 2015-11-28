@@ -8,6 +8,10 @@ import slugify from '../../core/slugify';
 @withStyles(styles)
 class CampaignDetails extends Component {
 
+	static contextTypes = {
+		onSetTitle: PropTypes.func.isRequired,
+	};
+
 	mapAlternate(array, fn1, fn2, thisArg) {
 		var fn = fn1, output = [];
 		for (var i=0; i<array.length; i++){
@@ -22,6 +26,7 @@ class CampaignDetails extends Component {
 		var campaignOutput = [];
 		var campaign = this.props.campaign;
 		var campaignIndex = this.props.campaignIndex;
+		this.context.onSetTitle(campaign.name);
 		var recapList = [];
 		var campaignSlug = slugify(campaign.name);
 		var campaignUrl = "/campaign/"+campaignIndex + "/" + campaignSlug
@@ -30,11 +35,12 @@ class CampaignDetails extends Component {
 			var recap = campaign.recaps[recapIndex];
 			var recapSlug = slugify(recap.title);
 			var recapUrl = campaignUrl + "/" + recapIndex + "/" + recapSlug;
-			var authorUrl = campaignUrl + "/bio/" + slugify(recap.author);
-			var authorText = <div className="CampaignDetails-author-text">{this.mapAlternate(recap.authorText.split(/#([^#]*)#/), 
+			var authorUrl = recap.author && campaignUrl + "/bio/" + slugify(recap.author) || null;
+			!recap.authorText && console.log(recapIndex, "recap authorText missing");
+			var authorText = recap.authorText && <div className="CampaignDetails-author-text">{this.mapAlternate(recap.authorText.split(/#([^#]*)#/), 
 				function(textFragment){ return textFragment },
 				function(textFragment){ return <a href={authorUrl} key="link">{textFragment}</a>; }
-			)}</div>;
+			)}</div> || null;
 			recapList.push(
 				<div className="CampaignDetails-recap" key={recapIndex} >
 					<a className="CampaignDetails-recap-cover" href={recapUrl} title={recap.title} >
@@ -54,7 +60,7 @@ class CampaignDetails extends Component {
 			for( var characterSlug in campaign.characters ){
 				var character = campaign.characters[characterSlug];
 				var characterUrl = campaignUrl + "/character/" + characterSlug;
-				$characters.push(<a href={characterUrl} className="btn btn-info iron-dark">{character.name}</a>);
+				$characters.push(<a href={characterUrl} className="btn btn-info iron-dark" key={characterSlug}>{character.name}</a>);
 			}
 			if ($characters.length > 0){
 				$characters = <div className="CampaignDetails-characters" ><h2>Postavy</h2><p>{$characters}</p></div>;
