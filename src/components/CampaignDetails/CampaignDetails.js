@@ -45,7 +45,7 @@ class CampaignDetails extends Component {
 				<div className="CampaignDetails-recap" key={recapIndex} >
 					<a className="CampaignDetails-recap-cover" href={recapUrl} title={recap.title} >
 						<img src={recap.cover} alt="" className="img-responsive" />
-						<h2 className="h1" >#{recapIndex}&ensp;{recap.title}</h2>
+						<h2 className="h1" >#{recapIndex+1}&ensp;{recap.title}</h2>
 					</a>
 					{authorText}
 					<div className="CampaignDetails-recap-intro" dangerouslySetInnerHTML={{__html: recap.intro || ''}} ></div>
