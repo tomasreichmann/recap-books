@@ -63,18 +63,18 @@ class RecapDetails extends Component {
 			function(textFragment){ return <a href={authorUrl} key="link">{textFragment}</a>; }
 		)}</div> || null;
 
-		var text = recap.text.replace(/\[img([^\]]*)\]/, '<img src="/' + campaignSlug + '/$1.jpg" alt="" class="RecapDetails-text-image" />' );
+		var text = recap.text.replace(/\[img([^\]]*)\]/g, '<img src="/' + campaignSlug + '/$1.jpg" alt="" class="RecapDetails-text-image" />' );
 
 		return <article className="RecapDetails container" role="article" >
 			<div className="RecapDetails-recap-cover" >
 				<img src={recap.cover} alt="" className="img-responsive" />
-				<h1 >#{recapIndex}&ensp;{recap.title}</h1>
+				<h1 >#{recapIndex+1}&ensp;{recap.title}</h1>
 			</div>
 			{authorText}
 			<div className="RecapDetails-recap-intro" dangerouslySetInnerHTML={{__html: recap.intro || ''}} ></div>
 			<hr className="trim8 mt-xlg mb-xlg" />
-			<div className="RecapDetails-text" dangerouslySetInnerHTML={{__html: text || ''}} ></div>
-			<hr className="trim8 mt-xlg mb-xlg" />
+			<div className="RecapDetails-text clearfix" dangerouslySetInnerHTML={{__html: text || ''}} ></div>
+			<hr className="trim8 mt-xlg mb-xlg clearfix" />
 			<div className="RecapDetails-nav clearfix">
 				<div className="col-sm-4 no-pl">{ $previousRecapLink }</div>
 				<div className="col-sm-4 no-pl text-center"><a className="btn btn-info wood" href={campaignUrl} title={campaign.name} >Zpět na<br/>{campaign.name}</a></div>

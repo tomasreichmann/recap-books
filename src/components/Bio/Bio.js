@@ -21,15 +21,18 @@ class Bio extends Component {
 		var campaignUrl = "/campaign/"+campaignIndex + "/" + campaignSlug;
 		var character = this.props.character;
 		this.context.onSetTitle(character.name + " | " + campaign.name);
+		var text = character.bio.replace(/\[img([^\]]*)\]/g, '<img src="/' + campaignSlug + '/$1.jpg" alt="" class="Bio-text-image" />' );
 
 		if( typeof campaign.characters == "object"){
 			for( var characterSlug in campaign.characters ){
-				var character = campaign.characters[characterSlug];
-				var characterUrl = campaignUrl + "/character/" + characterSlug;
-				$characters.push(<a href={characterUrl} className="btn btn-info iron-dark">{character.name}</a>);
+				(function() {
+					var character = campaign.characters[characterSlug];
+					var characterUrl = campaignUrl + "/character/" + characterSlug;
+					$characters.push(<a href={characterUrl} className="btn btn-info iron-dark">{character.name}</a>);
+				})(characterSlug);
 			}
 			if ($characters.length > 0){
-				$characters = <div className="CampaignDetails-characters" ><h2>Postavy</h2><p>{$characters}</p></div>;
+				$characters = <div className="Bio-characters" ><h2>Postavy</h2><p>{$characters}</p></div>;
 			}
 		}
 		
@@ -37,12 +40,12 @@ class Bio extends Component {
 			<div className="col-sm-4" >
 				<div className="Bio-image" >
 					<img src={character.image} alt="" className="img-responsive" />
-					<h1>{character.name}</h1>
 				</div>
 			</div>
-			<div className="cols-sm-8">
-				<div className="Bio-text" dangerouslySetInnerHTML={{__html: character.bio || ''}} ></div>
-				<hr className="trim8 mt-xlg" />
+			<div className="col-sm-8">
+				<h1>{character.name}</h1>
+				<div className="Bio-text clearfix" dangerouslySetInnerHTML={{__html: text || ''}} ></div>
+				<hr className="trim8 mt-xlg clearfix" />
 				<div className="Bio-nav clearfix">
 					{$characters}
 					<p><a className="btn btn-info wood" href={campaignUrl} title={campaign.name} >Zpět na<br/>{campaign.name}</a></p>
