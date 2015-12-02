@@ -33,9 +33,26 @@
 		margin-bottom: 20px;
 		font-style: italic;
 	}
-	&-text-image {
-		float: left;
-		max-width: 50%;
-		margin: 10px 20px 10px 0;
+	&-text {
+		line-height: 1.75;
+
+		p {
+			margin-bottom: 15px;
+		}
+
+		&-image {
+			float: left;
+			clear: left;
+			max-width: 50%;
+			margin: 10px 20px 10px 0;
+		}
+	}
+	&-nav {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		> div {
+			margin-bottom: 20px;
+		}
 	}
 }

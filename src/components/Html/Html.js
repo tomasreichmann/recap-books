@@ -42,7 +42,6 @@ class Html extends Component {
       </head>
       <body>
         <div id="app" dangerouslySetInnerHTML={{__html: this.props.body}} />
-        <script src="/scripts/bootstrap.min.js"></script>
         <script src="/app.js"></script>
         <script dangerouslySetInnerHTML={this.trackingCode()} />
       </body>

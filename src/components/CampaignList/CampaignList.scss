@@ -3,11 +3,35 @@
 @import '../variables.scss';
 
 .CampaignList {
-  margin: 0 auto;
-  padding: 0 0 40px;
-  max-width: $max-content-width;
+	margin: 0 auto;
+	padding: 0 0 40px;
+	max-width: $max-content-width;
 
-  &-campaign-image {
-	margin: 30px auto;
-  }
+	&-campaign-image {
+		margin: 40px 10%;
+	}
+
+	@media screen and (min-width: $screen-sm-min) {
+		&-campaign {
+			display: flex;
+			align-items: stretch;
+
+			&-image {
+				margin: 0;
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				a {
+					display: block;
+					flex: 0;
+				}
+			}
+			&-text {
+				margin-left: 40px;
+				flex: 2
+			}
+		}
+
+	}
 }

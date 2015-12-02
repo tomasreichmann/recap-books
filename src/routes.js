@@ -19,6 +19,7 @@ const router = new Router(on => {
 
 	on('*', async (state, next) => {
 		const component = await next();
+		data = data || await http.get('/data.json');
 		return component && <App context={state.context} data={data} >{component}</App>;
 	});
 

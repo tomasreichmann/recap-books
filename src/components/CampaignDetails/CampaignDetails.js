@@ -45,12 +45,13 @@ class CampaignDetails extends Component {
 				<div className="CampaignDetails-recap" key={recapIndex} >
 					<a className="CampaignDetails-recap-cover" href={recapUrl} title={recap.title} >
 						<img src={recap.cover} alt="" className="img-responsive" />
-						<h2 className="h1" >#{recapIndex+1}&ensp;{recap.title}</h2>
+						<h2>#{recapIndex+1}&ensp;{recap.title}</h2>
 					</a>
-					{authorText}
-					<div className="CampaignDetails-recap-intro" dangerouslySetInnerHTML={{__html: recap.intro || ''}} ></div>
-					<p className="text-right"><a href={recapUrl} title={recap.title} className="btn btn-info wood">Více &gt;</a></p>
-					<hr className="trim8 mt-xlg mb-xlg" />
+					<div className="CampaignDetails-recap-text">
+						{authorText}
+						<div className="CampaignDetails-recap-intro" dangerouslySetInnerHTML={{__html: recap.intro || ''}} ></div>
+					</div>
+					<p className="CampaignDetails-recap-more"><a href={recapUrl} title={recap.title} className="btn btn-info wood">Více &gt;</a></p>
 				</div>
 			);
 		};
@@ -60,20 +61,26 @@ class CampaignDetails extends Component {
 			for( var characterSlug in campaign.characters ){
 				var character = campaign.characters[characterSlug];
 				var characterUrl = campaignUrl + "/character/" + characterSlug;
-				$characters.push(<a href={characterUrl} className="btn btn-info iron-dark" key={characterSlug}>{character.name}</a>);
+				$characters.push(<a href={characterUrl} className="btn btn-primary gold-lighter" key={characterSlug}>{character.name}</a>);
 			}
 			if ($characters.length > 0){
-				$characters = <div className="CampaignDetails-characters" ><h2>Postavy</h2><p>{$characters}</p></div>;
+				$characters = <div className="CampaignDetails-characters" ><hr className="trim7 mt-xlg mb-lg" /><h2>Postavy</h2><p>{$characters}</p></div>;
 			}
 		}
 
+		var image = campaign.logo ? <div><img className="img-responsive" src={campaign.logo} /></div> : null;
+		var campaignDates = campaign.startDate && campaign.endDate ? <p className="CampaignList-date-span">Od: { new Date(campaign.startDate) } do { new Date(campaign.endDate) }</p> : null;
 
-		return <main className="CampaignDetails-module container" role="main" >
-			<div className="page-header mb-xlg">
-				<div className="CampaignDetails-logo"><img src={campaign.logo} alt="" className="img-responsive" /></div>
-				<h1 className="text-center">{campaign.name}</h1>
+		return <main className="CampaignDetails container" role="main" >
+			<div className="CampaignDetails-heading" key={campaignIndex} >
+				<div className="CampaignDetails-heading-image" >{image}</div>
+				<div className="CampaignDetails-heading-text">
+					<h1><a href={campaignUrl} >{campaign.name}</a></h1>
+					{campaignDates}
+					<p className="CampaignDetails-heading-length">{campaign.recaps.length} Recapů</p>
+					<div className="CampaignDetails-heading-description" dangerouslySetInnerHTML={{__html: campaign.description || ''}} ></div>
+				</div>
 			</div>
-			<div className="CampaignDetails-description" dangerouslySetInnerHTML={{__html: campaign.description || ''}} ></div>
 			{$characters}
 			<hr className="trim8 mt-xlg mb-xlg" />
 			<div className="CampaignDetails-recapList" >

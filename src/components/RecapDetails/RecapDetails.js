@@ -48,12 +48,12 @@ class RecapDetails extends Component {
 		var previousRecapIndex = recapIndex-1;
 		var previousRecap = this.getRecapByIndex(previousRecapIndex);
 		var previousRecapUrl = previousRecap ? this.getRecapUrl(previousRecap, previousRecapIndex, campaignUrl) : undefined;
-		var $previousRecapLink = previousRecapUrl ? <a href={previousRecapUrl} title={previousRecap.title} className="btn btn-info wood">&lt; Předchozí<br/>{previousRecap.title}</a> : undefined
+		var $previousRecapLink = previousRecapUrl ? <a href={previousRecapUrl} title={previousRecap.title} className="btn btn-info wood RecapDetails-nav-previous">&lt; Předchozí<br/>{previousRecap.title}</a> : undefined
 
 		var nextRecapIndex = recapIndex+1;
 		var nextRecap = this.getRecapByIndex(nextRecapIndex);
 		var nextRecapUrl = nextRecap ? this.getRecapUrl(nextRecap, nextRecapIndex, campaignUrl) : undefined;
-		var $nextRecapLink = nextRecapUrl ? <a href={nextRecapUrl} title={nextRecap.title} className="btn btn-info wood">Následující &gt;<br/>{nextRecap.title}</a> : undefined
+		var $nextRecapLink = nextRecapUrl ? <a href={nextRecapUrl} title={nextRecap.title} className="btn btn-info wood RecapDetails-nav-next">Následující &gt;<br/>{nextRecap.title}</a> : undefined
 
 		var authorUrl = recap.author && campaignUrl + "/bio/" + slugify(recap.author) || null;
 			!recap.authorText && console.log(recapIndex, "recap authorText missing");
@@ -75,10 +75,10 @@ class RecapDetails extends Component {
 			<hr className="trim8 mt-xlg mb-xlg" />
 			<div className="RecapDetails-text clearfix" dangerouslySetInnerHTML={{__html: text || ''}} ></div>
 			<hr className="trim8 mt-xlg mb-xlg clearfix" />
-			<div className="RecapDetails-nav clearfix">
-				<div className="col-sm-4 no-pl">{ $previousRecapLink }</div>
-				<div className="col-sm-4 no-pl text-center"><a className="btn btn-info wood" href={campaignUrl} title={campaign.name} >Zpět na<br/>{campaign.name}</a></div>
-				<div className="col-sm-4 no-pr text-right">{ $nextRecapLink }</div>
+			<div className="RecapDetails-nav">
+				<div>{ $previousRecapLink }</div>
+				<div><a className="btn btn-info wood RecapDetails-nav-top" href={campaignUrl} title={campaign.name} >Zpět na<br/>{campaign.name}</a></div>
+				<div>{ $nextRecapLink }</div>
 			</div>
 		</article>
 	}

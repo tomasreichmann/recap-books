@@ -28,11 +28,11 @@ class Bio extends Component {
 				(function() {
 					var character = campaign.characters[characterSlug];
 					var characterUrl = campaignUrl + "/character/" + characterSlug;
-					$characters.push(<a href={characterUrl} className="btn btn-info iron-dark">{character.name}</a>);
+					$characters.push(<a href={characterUrl} className="btn btn-primary gold-lighter">{character.name}</a>);
 				})(characterSlug);
 			}
 			if ($characters.length > 0){
-				$characters = <div className="Bio-characters" ><h2>Postavy</h2><p>{$characters}</p></div>;
+				$characters = <div className="Bio-characters" ><h2>Postavy</h2><p>{$characters}</p><hr className="trim7 mt-xlg mb-xlg clearfix" /></div>;
 			}
 		}
 		
@@ -45,7 +45,7 @@ class Bio extends Component {
 			<div className="col-sm-8">
 				<h1>{character.name}</h1>
 				<div className="Bio-text clearfix" dangerouslySetInnerHTML={{__html: text || ''}} ></div>
-				<hr className="trim8 mt-xlg clearfix" />
+				<hr className="trim8 mt-xlg no-mb clearfix" />
 				<div className="Bio-nav clearfix">
 					{$characters}
 					<p><a className="btn btn-info wood" href={campaignUrl} title={campaign.name} >Zpět na<br/>{campaign.name}</a></p>
