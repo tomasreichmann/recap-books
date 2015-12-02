@@ -5,11 +5,31 @@ import styles from './Header.scss';
 import withStyles from '../../decorators/withStyles';
 import Link from '../Link';
 import Navigation from '../Navigation';
+import slugify from '../../core/slugify';
 
 @withStyles(styles)
 class Header extends Component {
 
+  state = {
+    campaignDropdownOpen: false
+  }
+
+  toggle(stateVar){
+    var stateUpdate = {};
+    stateUpdate[stateVar] = !this.state[stateVar]
+    this.setState(stateUpdate);
+  }
+
   render() {
+    var $campaignLinks = [];
+    var campaigns = this.props.data.campaigns;
+    for (let campaignIndex = 0; campaignIndex < campaigns.length; campaignIndex++) {
+      let campaign = campaigns[campaignIndex];
+      let campaignSlug = slugify(campaign.name);
+      let campaignUrl = "/campaign/"+campaignIndex + "/" + campaignSlug;
+      $campaignLinks.push(<li key={campaignIndex}><a href={campaignUrl}>{campaign.name}</a></li>);
+    };
+    var campaignDropdownOpenClass = this.state.campaignDropdownOpen && " open" || "";
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top wood-darker" role="navigation">
       <div className="container">
@@ -25,11 +45,10 @@ class Header extends Component {
         <div id="navbar" className="navbar-collapse collapse">
           <ul className="nav navbar-nav">
             <li><a href="/">Index</a></li>
-            <li className="dropdown">
-              <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Kampaň <span className="caret"></span></a>
+            <li className={"dropdown"+campaignDropdownOpenClass}>
+              <span className="dropdown-toggle a" onClick={function(){this.toggle("campaignDropdownOpen")}.bind(this)} data-toggle="dropdown" role="button" aria-expanded="false">Kampaň <span className="caret"></span></span>
               <ul className="dropdown-menu" role="menu">
-                <li><a href="/campaign/dokud-nas-smrt-nebo-neco-horsiho-nerozdeli">Dokud nás smrt nebo něco horšího nerozdělí</a></li>
-                <li><a href="/campaign/wings-of-fortune">Wings of Fortune</a></li>
+                {$campaignLinks}
               </ul>
             </li>
           </ul>

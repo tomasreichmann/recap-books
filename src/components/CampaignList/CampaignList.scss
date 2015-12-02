@@ -2,8 +2,12 @@
 
 @import '../variables.scss';
 
-.RegisterPage-container {
+.CampaignList {
   margin: 0 auto;
   padding: 0 0 40px;
   max-width: $max-content-width;
+
+  &-campaign-image {
+	margin: 30px auto;
+  }
 }

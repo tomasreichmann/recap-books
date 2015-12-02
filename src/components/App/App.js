@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return !this.props.error ? (
       <div>
-        <Header />
+        <Header data={this.props.data} />
         {this.props.children}
       </div>
     ) : this.props.children;

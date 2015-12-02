@@ -1,8 +1,8 @@
 {
 	"campaigns": [
 		{
-			"name": "Wings of fortune",
-			"description": "Wings of fortune je kampaň, která se hrála od ?? do ?? v Praze na Žižkově pod vedením GM Tomáše R. Hrdinové vyrůstali ve vesnici Staré lány, na půl cesty mezi Západákovem a Koncem světa. Po tom, co získali dost zkušeností drobnými pracemi ve městě, vydali se prozkoumávat okolí. Jejich zvědavost a odhodlání je provedl pláněmi vzduchu, ohně, země a vody na cestě k vzkříšení bájného elementárního lorda Sairazul, křišťálové královny.",
+			"name": "Wings of Fortune",
+			"description": "Wings of Fortune je kampaň, která se hrála od ?? do ?? v Praze na Žižkově pod vedením GM Tomáše R. Hrdinové vyrůstali ve vesnici Staré lány, na půl cesty mezi Západákovem a Koncem světa. Po tom, co získali dost zkušeností drobnými pracemi ve městě, vydali se prozkoumávat okolí. Jejich zvědavost a odhodlání je provedl pláněmi vzduchu, ohně, země a vody na cestě k vzkříšení bájného elementárního lorda Sairazul, křišťálové královny.",
 			"logo": "/wings-of-fortune/logo.png",
 			"characters": {
 				"sammy": {
@@ -356,10 +356,6 @@
 					"levelInfo": null
 				}
 			]
-		},
-		{
-			"name": "Dokud nás smrt nebo něco horšího nerozdělí",
-			"recaps": []
 		}
 	]
 }

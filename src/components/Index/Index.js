@@ -18,10 +18,6 @@ class Index extends Component {
     var campaignList = this.props.campaigns && <CampaignList campaigns={this.props.campaigns} /> || null;
     return (
     <div className="container" role="main">
-      <div className="jumbotron iron-dark text-gray-lighter">
-        <h1>Recap books</h1>
-        <p><a href="/style-guide" className="btn btn-primary btn-lg gold-lighter" role="button">Style guide »</a></p>
-      </div>
       {campaignList}
     </div>
     );

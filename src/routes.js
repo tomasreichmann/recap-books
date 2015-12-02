@@ -13,21 +13,24 @@ import Bio from './components/Bio';
 import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
 
+var data;
 const router = new Router(on => {
+
+
 	on('*', async (state, next) => {
 		const component = await next();
-		return component && <App context={state.context}>{component}</App>;
+		return component && <App context={state.context} data={data} >{component}</App>;
 	});
 
 	on('/', async () => {
-		const data = await http.get('/data.json');
+		data = data || await http.get('/data.json');
 		return <Index {...data} />
 	});
 
 	on('/style-guide', async () => <StyleGuide />);
 
 	on('/campaign/:campaignIndex/*/character/:characterSlug', async (state) => {
-		const data = await http.get('/data.json');
+		data = data || await http.get('/data.json');
 		console.log("BIO");
 		var characterExists = "campaigns" in data
 			&& state.params.campaignIndex in data.campaigns
@@ -41,7 +44,7 @@ const router = new Router(on => {
 	});
 
 	on('/campaign/:campaignIndex/*/:recapIndex/*', async (state) => {
-		const data = await http.get('/data.json');
+		data = data || await http.get('/data.json');
 		var recapExists = "campaigns" in data
 			&& state.params.campaignIndex in data.campaigns
 			&& "recaps" in data.campaigns[state.params.campaignIndex]
@@ -55,7 +58,7 @@ const router = new Router(on => {
 	});
 
 	on('/campaign/:campaignIndex/*', async (state) => {
-		const data = await http.get('/data.json');
+		data = data || await http.get('/data.json');
 		return ("campaigns" in data && state.params.campaignIndex in data.campaigns) ? <CampaignDetails
 			campaign={data.campaigns[state.params.campaignIndex]}
 			campaignIndex={state.params.campaignIndex} /> : false;
