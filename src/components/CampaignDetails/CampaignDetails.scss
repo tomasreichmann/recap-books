@@ -14,10 +14,6 @@
 		align-items: stretch;
 	}
 	&-recap {
-		width: 48%;
-		margin-bottom: 40px;
-		display: flex;
-		flex-direction: column;
 
 		&-cover {
 			display: block;
@@ -79,6 +75,12 @@
 				margin-left: 40px;
 				flex: 2
 			}
+		}
+		&-recap {
+			width: 48%;
+			margin-bottom: 40px;
+			display: flex;
+			flex-direction: column;
 		}
 	}
 }
