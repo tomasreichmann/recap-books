@@ -5,23 +5,18 @@
 .CampaignDetails {
 	&-heading-image {
 		margin: 40px 10%;
-	}
 
-	&-recapList {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		align-items: stretch;
+		img {
+			width: 100%;
+		}
 	}
 	&-recap {
+		margin-bottom: 40px;
 
 		&-cover {
 			display: block;
 			position: relative;
 			margin-bottom: 20px;
-			img {
-				width: 100%;
-			}
 			h2 {
 				position: absolute;
 				left: 0;
@@ -41,6 +36,7 @@
 			flex: 1;
 		}
 		&-more {
+			margin-top: 20px;
 			text-align: right;
 		}
 	}
@@ -75,6 +71,12 @@
 				margin-left: 40px;
 				flex: 2
 			}
+		}
+		&-recapList {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: stretch;
 		}
 		&-recap {
 			width: 48%;
