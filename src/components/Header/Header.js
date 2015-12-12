@@ -11,7 +11,8 @@ import slugify from '../../core/slugify';
 class Header extends Component {
 
   state = {
-    campaignDropdownOpen: false
+    campaignDropdownOpen: false,
+    mobileNavOpen: false
   }
 
   toggle(stateVar){
@@ -30,11 +31,12 @@ class Header extends Component {
       $campaignLinks.push(<li key={campaignIndex}><a href={campaignUrl}>{campaign.name}</a></li>);
     };
     var campaignDropdownOpenClass = this.state.campaignDropdownOpen && " open" || "";
+    var mobileNavOpenClass = this.state.mobileNavOpen && " in" || "";
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top wood-darker" role="navigation">
       <div className="container">
         <div className="navbar-header">
-          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <button type="button" className="navbar-toggle collapsed" onClick={function(){this.toggle("mobileNavOpen")}.bind(this)} data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span className="sr-only">Toggle navigation</span>
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
@@ -42,7 +44,7 @@ class Header extends Component {
           </button>
           <a className="navbar-brand logo" href="/" ><img src={ require('./gotika-logo.svg') } alt="" height="32" className="middle" /> Knihy recapů</a>
         </div>
-        <div id="navbar" className="navbar-collapse collapse">
+        <div id="navbar" className={"navbar-collapse collapse" + mobileNavOpenClass}>
           <ul className="nav navbar-nav">
             <li><a href="/">Index</a></li>
             <li className={"dropdown"+campaignDropdownOpenClass}>

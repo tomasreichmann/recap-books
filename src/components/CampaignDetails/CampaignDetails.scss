@@ -5,6 +5,9 @@
 .CampaignDetails {
 	&-heading-image {
 		margin: 40px 10%;
+		img {
+			width: 100%;
+		}
 	}
 
 	&-recapList {
@@ -42,6 +45,7 @@
 		}
 		&-more {
 			text-align: right;
+			margin: 20px 0;
 		}
 	}
 	&-author-text {
@@ -52,7 +56,15 @@
 		h2 {
 			margin-bottom: 20px;
 		}
-		a+a { margin-left: 1em; }
+		p {
+			margin: 20px -10px;
+			text-align: justify;
+		}
+		a {
+			display: inline-block;
+			vertical-align: top;
+			margin: 0 10px 10px 10px;
+		}
 	}
 
 	@media screen and (min-width: $screen-sm-min) {
