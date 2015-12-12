@@ -9,6 +9,9 @@
 
 	&-campaign-image {
 		margin: 40px 10%;
+		img {
+			width: 100%;
+		}
 	}
 
 	@media screen and (min-width: $screen-sm-min) {

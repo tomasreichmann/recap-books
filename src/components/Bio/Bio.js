@@ -28,7 +28,7 @@ class Bio extends Component {
 				(function() {
 					var character = campaign.characters[characterSlug];
 					var characterUrl = campaignUrl + "/character/" + characterSlug;
-					$characters.push(<a href={characterUrl} className="btn btn-primary gold-lighter">{character.name}</a>);
+					$characters.push(<a href={characterUrl} className="btn btn-primary gold-lighter" key={characterSlug} >{character.name}</a>);
 				})(characterSlug);
 			}
 			if ($characters.length > 0){

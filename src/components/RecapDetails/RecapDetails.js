@@ -23,8 +23,6 @@ class RecapDetails extends Component {
 	};
 
 	getRecapByIndex(recapIndex){
-		console.log("getRecapByIndex", recapIndex, this.props.campaign.recaps, recapIndex in this.props.campaign.recaps);
-		console.log("getRecapByIndex", this.props.campaign.recaps[recapIndex]);
 		if(recapIndex in this.props.campaign.recaps){
 			return this.props.campaign.recaps[recapIndex];
 		}
@@ -56,7 +54,7 @@ class RecapDetails extends Component {
 		var $nextRecapLink = nextRecapUrl ? <a href={nextRecapUrl} title={nextRecap.title} className="btn btn-info wood RecapDetails-nav-next">Následující &gt;<br/>{nextRecap.title}</a> : undefined
 
 		var authorUrl = recap.author && campaignUrl + "/bio/" + slugify(recap.author) || null;
-			!recap.authorText && console.log(recapIndex, "recap authorText missing");
+			//!recap.authorText && console.log(recapIndex, "recap authorText missing");
 			recap.authorText = recap.authorText || "";
 		var authorText = recap.authorText && <div className="RecapDetails-author-text">{this.mapAlternate(recap.authorText.split(/#([^#]*)#/), 
 			function(textFragment){ return textFragment },
